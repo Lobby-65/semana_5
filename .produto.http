@@ -1,0 +1,32 @@
+GET http://localhost:8080/produtos
+
+###
+
+GET http://localhost:8080/produtos
+
+###
+
+POST http://localhost:8080/produtos
+content-type: application/json
+
+{
+    "nome": "cafe",
+    "descricao": "BEM FORTE E AMARGO",
+    "preco": 5,
+    "tags": ["f", "ba1"]
+}
+
+###
+
+PUT http://localhost:8080/produtos?id=4
+content-type: application/json
+
+{
+    "nome": "cafe",
+    "descricao": "BEM FRACO E COM LEITE",
+    "preco": 3
+}
+
+###
+
+DELETE http://localhost:8080/produtos?id=3

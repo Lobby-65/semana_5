@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const { v4: uuidv4 } = require('uuid')
 const produtoMid = require('../middleware/validarProduto.middleware');
-const { Produto } = require('../models');
+const { Produto } = require('../db/models');
 
 const produtos = {}
 
@@ -27,6 +27,7 @@ router.put('/', async (req, res) => {
         produto.nome = req.body.nome
         produto.descricao = req.body.descricao
         produto.preco = req.body.preco
+        produto.tags = req.body.tags
         await produto.save()
         res.json({msg: "Produto atualizado com sucesso!"})
     }else{
@@ -36,7 +37,7 @@ router.put('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const Produto = await Produto.create(req.body)
+    const produto = await Produto.create(req.body)
     res.json({msg: "Produto adicionado com sucesso!"})
 })
 

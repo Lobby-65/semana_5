@@ -5,10 +5,10 @@ const { query } = require('express');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.addColumn('produto', 'tags', {
+    return queryInterface.addColumn('Produtos', 'tagId', {
       type: Sequelize.INTEGER,
       references: {
-        model: 'produto',
+        model: 'Tags',
         key: 'id'
       },
       onDelete: 'SET NULL'
@@ -16,6 +16,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.removeColumn('produto', 'tags')
+    return queryInterface.removeColumn('Produtos', 'tags')
   }
 };
